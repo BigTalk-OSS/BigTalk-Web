@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Big Talk</title>
+</head>
+<body>
+<h1>Big Talk</h1>
+<h3>Add Post</h3>
+<form name = "add-post-form" action = "">
+    Title: <input type="text" name="title"><br>
+    Body: <input type="text" name="body"><br>
+    Media: <input type="text" name="media"><br>
+    Location: <input type="text" name="location"><br>
+    Keywords: <input type="text" name="keywords"><br>
+    <input type="button" value="Send" name="submit">
+</form>
+<br><br><br>
+<table id="post-table" border="1px">
+    <tr>
+        <th>
+            Title
+        </th>
+
+        <th>
+            Body
+        </th>
+
+        <th>
+            Media
+        </th>
+
+        <th>
+            Location
+        </th>
+
+        <th>
+            TimeStamp
+        </th>
+
+        <th>
+            Keywords
+        </th>
+
+        <th>
+            Author
+        </th>
+    </tr>
+</table>
+<br><br><br>
+<button id="get-posts-btn">Get Posts</button>
+<br><br><br>
+<div class="status-div">
+    <span class="status-title">Status: </span><span class="status-text" id="status-text-element">...</span>
+</div>
+</body>
+<footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <style type="text/css">
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+</footer>
+</html>

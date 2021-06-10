@@ -1,0 +1,16 @@
+{
+  "name": "big-talk",
+  "version": "1.0.0",
+  "description": "Anonymous Decentralized Atricle posting service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "amannirala13",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "web3": "^1.3.6"
+  }
+}
