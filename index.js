@@ -355,8 +355,10 @@ async function loadWeb3() {
         updateStatus("Ready!");
     }
     else{
-        updateStatus("No web3 provider detected!")
-        console.log("No web3 provider detected!")
+        window.web3 = await new Web3(new Web3.providers.HttpProvider("https://data-seed-prebsc-2-s1.binance.org:8545/"));
+        window.contract = await loadContract();
+        updateStatus("No web3 provider detected! Read only mode!")
+        console.log("No web3 provider detected! Read only mode!")
     }
 }
 
