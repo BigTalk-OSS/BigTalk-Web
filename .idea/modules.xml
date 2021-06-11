@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BigTalk-Web.iml" filepath="$PROJECT_DIR$/.idea/BigTalk-Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/big-talk.iml" filepath="$PROJECT_DIR$/.idea/big-talk.iml" />
     </modules>
   </component>
 </project>
