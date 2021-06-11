@@ -1,0 +1,35 @@
+.title-bar-container{
+    display: flex;
+    flex-flow: row;
+    height: auto;
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+.branding-container{
+    display: flex;
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+    flex-direction: row;
+    text-align: center;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.logo{
+    max-height: 5em;
+    max-width: 5em;
+    width:auto;
+    height: auto;
+    margin: auto
+}
+
+.name{
+    margin: auto;
+    width: auto;
+    height: auto;
+    font-size: large;
+}
+

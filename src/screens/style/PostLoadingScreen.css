@@ -1,0 +1,28 @@
+
+#loading-main-container{
+    padding-top: 10%;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: auto;
+}
+
+#fetching-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: auto;
+    text-align: center;
+    white-space: nowrap;
+    align-self: center;
+}
+
+#fetching-post-id-text{
+    font-size: small;
+    opacity: 0.9;
+}
+
+

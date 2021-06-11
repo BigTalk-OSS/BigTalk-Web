@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Button } from "shards-react";
+import { Alert } from "shards-react";
 
 export default class AlertNotification extends React.Component {
     constructor(props) {

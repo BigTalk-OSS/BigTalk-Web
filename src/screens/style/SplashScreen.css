@@ -13,8 +13,8 @@
 #SplashScreen-logo{
     width:auto;
     height:auto;
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 40%;
+    max-height: 40%;
 }
 
 #SplashScreen-progress{
@@ -24,7 +24,7 @@
 #SplashScreen-status{
     text-align: center;
     margin: auto;
-    font-size: small;
+    font-size: medium;
 }
 
 

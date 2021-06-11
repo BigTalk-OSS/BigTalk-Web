@@ -1,7 +1,7 @@
-import {UpdateStatusEventTag} from "../artifacts/EventTags";
+import {UpdateStatusEventTag, UpdatePostIdFetchTag, UpdateStatusPostLoad} from "../utils/EventTags";
 import Web3 from "web3";
 import {CONTRACT_ABI, CONTRACT_ADDRESS} from "../contract/ContractMetadata";
-import ShowAlertBar from "../artifacts/ShowNotification";
+import ShowAlertBar from "../utils/ShowNotification";
 
 export default async function loadWeb3() {
     if (window.ethereum) {
@@ -50,3 +50,22 @@ async function loadReadOnlyMode(){
 async function loadContract(){
     return await new window.web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 }
+
+export async function loadPosts() {
+    window.dispatchEvent(new CustomEvent(UpdateStatusPostLoad, {detail: "Loading index"}))
+    window.postBankIndex = await window.contract.methods.getPostBankIndex().call();
+    window.dispatchEvent(new CustomEvent(UpdateStatusPostLoad, {detail: "Loading posts"}))
+    window.postBank = [];
+    for(let id of window.postBankIndex){
+        console.log(id);
+        window.dispatchEvent(new CustomEvent(UpdatePostIdFetchTag, {detail: id}))
+        window.postBank.push(await window.contract.methods.getPost(id).call());
+    }
+
+    console.log(window.postBankIndex);
+    console.log(window.postBank);
+
+    window.dispatchEvent(new CustomEvent(UpdateStatusEventTag, {detail: "Done"}))
+    return Promise.resolve("Done");
+}
+

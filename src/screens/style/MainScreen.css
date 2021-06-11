@@ -1,0 +1,16 @@
+#main-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-context{
+    display: flex;
+    flex-grow: 2;
+    align-self: stretch;
+}
+
+#main-title-bar{
+    display:flex;
+}

@@ -1,13 +1,15 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import './../style/SplashScreen.css'
+import './style/SplashScreen.css'
 import logo from '../logo.svg'
-import GlobalEventListener from "../artifacts/GlobalEventListener";
+import GlobalEventListener from "../utils/GlobalEventListener";
 import loadWeb3 from "../web3js/ContractInterface";
-import {delay} from "../artifacts/Helper";
-import Intent from "../artifacts/Intent";
-import MainScreen from "./MainScreen";
-import ShowNotification from "../artifacts/ShowNotification";
+import {delay} from "../utils/Helper";
+import Intent from "../utils/Intent";
+import MainScreen, {MAIN_CONTEXT_ID} from "./MainScreen";
+import ShowNotification from "../utils/ShowNotification";
 import AlertNotification from "../artifacts/AlertNotification";
+import { AnimateOnChange } from 'react-animation'
+import {getPostsFromBlockChain} from "./PostLoadingScreen";
 
 export default function SplashScreen(props){
 
@@ -21,9 +23,20 @@ export default function SplashScreen(props){
 
 
     window.addEventListener('load', elementId => {
-        loadWeb3().then(async ()=>{
-            await delay(3000);
-            Intent(document.getElementById('root'), <MainScreen/>);})
+        loadWeb3()
+            .then(async ()=>{
+            await delay(5000);
+            Intent(document.getElementById('root'), <MainScreen/>)
+                .then((success) => {
+                    if (success)
+                        getPostsFromBlockChain(document.getElementById(MAIN_CONTEXT_ID));
+                })
+                .catch((e)=>{
+                ShowNotification(document.getElementById('notification-panel'),
+                    <AlertNotification theme={"danger"} message={e}/>);
+                console.log(e);
+                });
+            })
             .catch((e)=>{
             ShowNotification(document.getElementById('notification-panel'),
                 <AlertNotification theme={"danger"} message={e}/>);
@@ -42,6 +55,8 @@ export default function SplashScreen(props){
                  role="progressbar" aria-valuenow="75"
                  aria-valuemin="0" aria-valuemax="100"/>
         </div> <br/>
-        <span id="SplashScreen-status">{status}</span>
+        <AnimateOnChange animationIn={"popIn"} animationOut={"popOut"}>
+            <span id="SplashScreen-status">{status}</span>
+        </AnimateOnChange>
     </div>)
 }
