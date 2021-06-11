@@ -33,12 +33,11 @@ jobs:
       run: |
         git config --global user.name $user_name
         git config --global user.email $user_email
-        git remote set-url origin https://${github_token}@github.com/${repository}
         npm run deploy
       env:
-        CI: false
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        CI: true
+        user_name: 'Github Action'
+        user_email: 'action@github.com'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         repository: ${{ github.repository }}
 
