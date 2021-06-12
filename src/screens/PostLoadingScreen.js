@@ -12,6 +12,7 @@ import {UpdatePostIdFetchTag, UpdateStatusPostLoad} from "../utils/EventTags";
 import TimeLine from "./TimeLine";
 import {MAIN_CONTEXT_ID} from "./MainScreen";
 import Intent from "../utils/Intent";
+import {colorify, flatten} from "lottie-colorify";
 
 
 export default function PostLoadingScreen(){
@@ -35,7 +36,7 @@ export default function PostLoadingScreen(){
     const mainLoadingLottieOptions = {
         loop: true,
         autoplay: true,
-        animationData: loadingAnimation,
+        animationData: flatten('#000000',loadingAnimation),
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
         }
@@ -44,7 +45,7 @@ export default function PostLoadingScreen(){
     const fetchingLottieOptions = {
         loop: true,
         autoplay: true,
-        animationData: fetchingAnimation,
+        animationData: flatten('#000000',fetchingAnimation),
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
         }
@@ -80,10 +81,7 @@ export function getPostsFromBlockChain(target){
         ,target
     );
 
-    loadPosts().then(
-        ()=>{
-             Intent(document.getElementById(MAIN_CONTEXT_ID), <TimeLine/>)
-        }
-    );
+    loadPosts()
+        .then(()=>{Intent(document.getElementById(MAIN_CONTEXT_ID), <TimeLine/>)});
 
 }

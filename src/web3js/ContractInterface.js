@@ -1,7 +1,7 @@
 import {UpdateStatusEventTag, UpdatePostIdFetchTag, UpdateStatusPostLoad} from "../utils/EventTags";
 import Web3 from "web3";
 import {CONTRACT_ABI, CONTRACT_ADDRESS} from "../contract/ContractMetadata";
-import ShowAlertBar from "../utils/ShowNotification";
+import Post from "../models/Post";
 
 export default async function loadWeb3() {
     if (window.ethereum) {
@@ -59,7 +59,16 @@ export async function loadPosts() {
     for(let id of window.postBankIndex){
         console.log(id);
         window.dispatchEvent(new CustomEvent(UpdatePostIdFetchTag, {detail: id}))
-        window.postBank.push(await window.contract.methods.getPost(id).call());
+
+        let rawData = await window.contract.methods.getPost(id).call();
+        let post = new Post({id: id,
+            title: rawData.heading,
+            body: rawData.body,
+            location: rawData.location,
+            timestamp: rawData.timestamp,
+            author: rawData.author})
+
+        window.postBank.push(post);
     }
 
     console.log(window.postBankIndex);
