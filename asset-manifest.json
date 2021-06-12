@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/BigTalk-Web/static/css/main.150ee27d.chunk.css",
-    "main.js": "/BigTalk-Web/static/js/main.c9105386.chunk.js",
-    "main.js.map": "/BigTalk-Web/static/js/main.c9105386.chunk.js.map",
+    "main.js": "/BigTalk-Web/static/js/main.884d0133.chunk.js",
+    "main.js.map": "/BigTalk-Web/static/js/main.884d0133.chunk.js.map",
     "runtime-main.js": "/BigTalk-Web/static/js/runtime-main.b6d7624e.js",
     "runtime-main.js.map": "/BigTalk-Web/static/js/runtime-main.b6d7624e.js.map",
     "static/css/2.442c343f.chunk.css": "/BigTalk-Web/static/css/2.442c343f.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.442c343f.chunk.css",
     "static/js/2.03a1e897.chunk.js",
     "static/css/main.150ee27d.chunk.css",
-    "static/js/main.c9105386.chunk.js"
+    "static/js/main.884d0133.chunk.js"
   ]
 }
