@@ -1,14 +1,18 @@
 import PostCard from "../artifacts/PostCard";
 import './style/TimeLine.css'
+import {Fab} from "@material-ui/core";
+import { EditRounded } from '@material-ui/icons';
+import {sortByNewTimeStampFirst} from "../utils/Helper";
 
 export default function TimeLine(){
 
     function createPostTimeLineInterface(postList){
         let postListView = [];
-       for(let post of postList){
-           postListView.push(<PostCard post={post}/>)
-       }
-       return postListView
+        postList = sortByNewTimeStampFirst(postList);
+        for(let post of postList){
+            postListView.push(<PostCard post={post}/>)
+        }
+        return postListView
     }
 
     let ui = createPostTimeLineInterface(window.postBank);
@@ -16,7 +20,12 @@ export default function TimeLine(){
 
     return (
         <div id={"timeline-holder"}>
-            {ui}
+            <div id={"timeline-post-holder"}>
+                {ui}
+            </div>
+            <div id={"timeline-filter-options"}>
+                <span id={"recommended-topics-title"}>Recommended Topics</span>
+            </div>
         </div>
     );
 }

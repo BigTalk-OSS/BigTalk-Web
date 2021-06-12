@@ -74,14 +74,14 @@ export default function PostLoadingScreen(){
     );
 }
 
-export function getPostsFromBlockChain(target){
-    unmountComponentAtNode(target);
+export function getPostsFromBlockChain(holder, target){
+    unmountComponentAtNode(holder);
     ReactDOM.render(
        <PostLoadingScreen/>
-        ,target
+        ,holder
     );
 
     loadPosts()
-        .then(()=>{Intent(document.getElementById(MAIN_CONTEXT_ID), <TimeLine/>)});
+        .then(()=>{Intent(document.getElementById(MAIN_CONTEXT_ID), target)});
 
 }

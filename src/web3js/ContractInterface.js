@@ -13,7 +13,7 @@ export default async function loadWeb3() {
             window.contract = await loadContract();
             console.log("Contract loaded!");
             console.log(window.contract);
-            window.dispatchEvent(new CustomEvent(UpdateStatusEventTag, {detail: "Done"}))
+            window.dispatchEvent(new CustomEvent(UpdateStatusEventTag, {detail: "Welcome"}))
             return Promise.resolve("Done");
         }catch(e){
             console.log(e);
@@ -27,7 +27,7 @@ export default async function loadWeb3() {
         window.contract = await loadContract();
         console.log("Contract loaded!");
         console.log(window.contract);
-        window.dispatchEvent(new CustomEvent(UpdateStatusEventTag, {detail: "Done"}))
+        window.dispatchEvent(new CustomEvent(UpdateStatusEventTag, {detail: "Welcome"}))
         return Promise.resolve("Done");
     }
     else{

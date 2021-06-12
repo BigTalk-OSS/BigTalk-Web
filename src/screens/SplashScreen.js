@@ -10,6 +10,7 @@ import ShowNotification from "../utils/ShowNotification";
 import AlertNotification from "../artifacts/AlertNotification";
 import { AnimateOnChange } from 'react-animation'
 import {getPostsFromBlockChain} from "./PostLoadingScreen";
+import TimeLine from "./TimeLine";
 
 export default function SplashScreen(props){
 
@@ -29,7 +30,7 @@ export default function SplashScreen(props){
             Intent(document.getElementById('root'), <MainScreen/>)
                 .then((success) => {
                     if (success)
-                        getPostsFromBlockChain(document.getElementById(MAIN_CONTEXT_ID));
+                        getPostsFromBlockChain(document.getElementById(MAIN_CONTEXT_ID), <TimeLine/>);
                 })
                 .catch((e)=>{
                 ShowNotification(document.getElementById('notification-panel'),

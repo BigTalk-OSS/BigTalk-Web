@@ -1,5 +1,43 @@
 #timeline-holder{
+    display: flex;
     width: 100%;
     height: auto;
     padding: 2%;
+    flex-direction: row;
+}
+
+#timeline-filter-options{
+    margin: 10% 8%;
+    width:30%;
+}
+
+#recommended-topics-title{
+    font-size: large;
+    padding: 2%;;
+}
+
+@media (max-width: 800px){
+    #timeline-holder{
+        display: flex;
+        width: 100%;
+        height: auto;
+        padding: 2%;
+        flex-direction: column;
+    }
+
+    #timeline-post-holder{
+        order: 1;
+    }
+
+    #timeline-filter-options{
+        margin: 10% 2%;
+        width: auto;
+        height: auto;
+        order: 0;
+    }
+
+    #recommended-topics-title{
+        font-size: large;
+        padding: 2%;;
+    }
 }

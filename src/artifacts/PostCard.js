@@ -10,9 +10,9 @@ export default function PostCard(props){
                 <CardBody>
                     <CardTitle id={"post-card-title"}>{post.title}</CardTitle>
                     <CardSubtitle id={"post-card-location"}>{post.location}</CardSubtitle>
-                    <br/><br/>
+                    <br/>
                     <span>{post.body}</span>
-                    <br/><br/><br/>
+                    <br/><br/>
                     <span style={{fontSize: "x-small", opacity: "0.5" }}>By {post.author}</span><br/>
                     <span  style={{fontSize: "x-small", opacity: "0.5" }}>{Date(post.timestamp)}</span>
                 </CardBody>
