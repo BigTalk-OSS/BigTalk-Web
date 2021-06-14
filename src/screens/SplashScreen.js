@@ -2,45 +2,73 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './style/SplashScreen.css'
 import logo from '../logo.svg'
 import GlobalEventListener from "../utils/GlobalEventListener";
-import loadWeb3 from "../web3js/ContractInterface";
+import {LoadWeb3} from "../web3js/ContractInterface";
 import {delay} from "../utils/Helper";
-import Intent from "../utils/Intent";
+import {Intent} from "../utils/Intent";
 import MainScreen, {MAIN_CONTEXT_ID} from "./MainScreen";
-import ShowNotification from "../utils/ShowNotification";
+import {ShowNotification} from "../utils/ShowNotification";
 import AlertNotification from "../artifacts/AlertNotification";
 import { AnimateOnChange } from 'react-animation'
-import {getPostsFromBlockChain} from "./PostLoadingScreen";
+import {updateAllPostsFromBlockChain} from "../utils/LoadingPost";
 import TimeLine from "./TimeLine";
 
+/**
+ * Initial loading screen of the web-app. Also the interface that should be active while any Web3 authorizations are taking place.
+ * @module SplashScreen
+ * @export
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ *
+ * @example
+ * <div>
+ * <Splashscreen/>
+ * </div>
+ *
+ * @author amannirala13
+ */
 export default function SplashScreen(props){
 
     let [status, setStatus] = useState("Loading")
 
+    /**
+     * This functions updates the status text in SplashScreen on event dispatch
+     * @param data - Data from the event. The `data.detail` object in the event must have the new status text.
+     */
     const updateStatus = (data) =>{
         console.log(data);
         setStatus(data.detail);
     }
+
+    /**
+     * Subscribing to Web3 update event using GlobalEventListener
+     * @see GlobalEventListener
+     */
     GlobalEventListener(props.statusUpdateEvent, updateStatus);
 
 
-    window.addEventListener('load', elementId => {
-        loadWeb3()
+    /**
+     * Once the webpage is loaded, the web-app loads the MainScreen with is the parent holder of all the other components
+     * or display a message notification if the loading fails for any reason.
+     * @see updateAllPostsFromBlockChain
+     * @see module:ShowNotification
+     */
+    window.addEventListener('load', _ => {
+        LoadWeb3()
             .then(async ()=>{
             await delay(5000);
             Intent(document.getElementById('root'), <MainScreen/>)
                 .then((success) => {
                     if (success)
-                        getPostsFromBlockChain(document.getElementById(MAIN_CONTEXT_ID), <TimeLine/>);
+                        updateAllPostsFromBlockChain(document.getElementById(MAIN_CONTEXT_ID), <TimeLine/>);
                 })
                 .catch((e)=>{
-                ShowNotification(document.getElementById('notification-panel'),
-                    <AlertNotification theme={"danger"} message={e}/>);
+                ShowNotification(<AlertNotification theme={"danger"} message={e}/>);
                 console.log(e);
                 });
             })
             .catch((e)=>{
-            ShowNotification(document.getElementById('notification-panel'),
-                <AlertNotification theme={"danger"} message={e}/>);
+            ShowNotification(<AlertNotification theme={"danger"} message={e}/>);
                 console.log(e);
             });
     })

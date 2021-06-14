@@ -1,4 +1,13 @@
+/**
+ * Address of the contract on BSC chain
+ * @type {string}
+ */
 export const CONTRACT_ADDRESS = "0x17B4660E75C6B6546B4F806cC3453948a435839A"
+
+/**
+ * Contract ABI
+ * @type {{}}
+ */
 export const CONTRACT_ABI = [
     {
         inputs: [],

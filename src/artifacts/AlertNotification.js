@@ -1,9 +1,30 @@
 import React from "react";
 import { Alert } from "shards-react";
 
+/**
+ * This is an Alert Notification component
+ * @module AlertNotification
+ * @export
+ * @returns {JSX.Element}
+ *
+ */
 export default class AlertNotification extends React.Component {
+    /**
+     *  This is the constructor for the Alert Notification class
+     *  @constructor
+     *  @param props
+     *  @property {string} theme - Theme of the notification. ["primary", "secondary", "info", "danger", "warning", "success", "light", "dark"
+     *  @property {string} message - Message to display in the notification.
+     *
+     *  @example
+     *  <div>
+     * <AlertNotification theme={"warning"} message={"Launching in read-only mode"}/>
+     * </div>
+     * @author amannirala13
+     */
     constructor(props) {
         super(props);
+
         this.theme = props.theme
         this.message = props.message
         this.interval = null;

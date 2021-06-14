@@ -2,6 +2,26 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle } from "shards-react";
 import './style/PostCard.css'
 
+/**
+ * This is the postcard component. These cards are used to render post details.
+ * @module PostCard
+ * @export
+ * @param props
+ * @property {Post} post - The post of which the data is to be loaded
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ *
+ * @example
+ * <div>
+ * <PostCard post={postObject}/>
+ *</div>
+ *
+ * @see Post
+ *
+ * @author amannirala13
+ */
+
 export default function PostCard(props){
     const [post, setPost] = useState(props.post);
 

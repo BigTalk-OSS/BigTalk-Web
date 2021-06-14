@@ -3,7 +3,8 @@
     flex-flow: row;
     height: auto;
     width: 100%;
-    padding: 1%;
+    padding: 2% 1%;
+    justify-content: space-between;
     margin-bottom: 2%;
 }
 
@@ -23,7 +24,6 @@
     max-width: 5em;
     width:auto;
     height: auto;
-    margin: auto
 }
 
 .name{
@@ -31,5 +31,41 @@
     width: auto;
     height: auto;
     font-size: large;
+}
+
+.right-container{
+    display: flex;
+    height: auto;
+    width: auto;
+    float: end;
+    position: relative;
+}
+
+@media (max-width: 800px){
+    .title-bar-container{
+        flex-flow: column wrap;
+        align-items: stretch;
+    }
+
+    .right-container{
+        display: flex;
+        height: auto;
+        width: auto;
+        float: end;
+        position: relative;
+        align-self: center;
+    }
+
+    .branding-container{
+        display: flex;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+        align-items: baseline;
+    }
 }
 
