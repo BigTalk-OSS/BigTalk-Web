@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/BigTalk-Web/static/css/main.aef7c786.chunk.css",
-    "main.js": "/BigTalk-Web/static/js/main.da049584.chunk.js",
-    "main.js.map": "/BigTalk-Web/static/js/main.da049584.chunk.js.map",
-    "runtime-main.js": "/BigTalk-Web/static/js/runtime-main.623b29a3.js",
-    "runtime-main.js.map": "/BigTalk-Web/static/js/runtime-main.623b29a3.js.map",
+    "main.css": "/BigTalk-Web/static/css/main.6a77bbee.chunk.css",
+    "main.js": "/BigTalk-Web/static/js/main.5d173030.chunk.js",
+    "main.js.map": "/BigTalk-Web/static/js/main.5d173030.chunk.js.map",
+    "runtime-main.js": "/BigTalk-Web/static/js/runtime-main.cd4666a3.js",
+    "runtime-main.js.map": "/BigTalk-Web/static/js/runtime-main.cd4666a3.js.map",
     "static/css/2.442c343f.chunk.css": "/BigTalk-Web/static/css/2.442c343f.chunk.css",
-    "static/js/2.2b5da824.chunk.js": "/BigTalk-Web/static/js/2.2b5da824.chunk.js",
-    "static/js/2.2b5da824.chunk.js.map": "/BigTalk-Web/static/js/2.2b5da824.chunk.js.map",
-    "static/js/3.41166a46.chunk.js": "/BigTalk-Web/static/js/3.41166a46.chunk.js",
-    "static/js/3.41166a46.chunk.js.map": "/BigTalk-Web/static/js/3.41166a46.chunk.js.map",
+    "static/js/2.008ea9b1.chunk.js": "/BigTalk-Web/static/js/2.008ea9b1.chunk.js",
+    "static/js/2.008ea9b1.chunk.js.map": "/BigTalk-Web/static/js/2.008ea9b1.chunk.js.map",
+    "static/js/3.da63df30.chunk.js": "/BigTalk-Web/static/js/3.da63df30.chunk.js",
+    "static/js/3.da63df30.chunk.js.map": "/BigTalk-Web/static/js/3.da63df30.chunk.js.map",
     "index.html": "/BigTalk-Web/index.html",
     "static/css/2.442c343f.chunk.css.map": "/BigTalk-Web/static/css/2.442c343f.chunk.css.map",
-    "static/css/main.aef7c786.chunk.css.map": "/BigTalk-Web/static/css/main.aef7c786.chunk.css.map",
-    "static/js/2.2b5da824.chunk.js.LICENSE.txt": "/BigTalk-Web/static/js/2.2b5da824.chunk.js.LICENSE.txt",
+    "static/css/main.6a77bbee.chunk.css.map": "/BigTalk-Web/static/css/main.6a77bbee.chunk.css.map",
+    "static/js/2.008ea9b1.chunk.js.LICENSE.txt": "/BigTalk-Web/static/js/2.008ea9b1.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/BigTalk-Web/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.623b29a3.js",
+    "static/js/runtime-main.cd4666a3.js",
     "static/css/2.442c343f.chunk.css",
-    "static/js/2.2b5da824.chunk.js",
-    "static/css/main.aef7c786.chunk.css",
-    "static/js/main.da049584.chunk.js"
+    "static/js/2.008ea9b1.chunk.js",
+    "static/css/main.6a77bbee.chunk.css",
+    "static/js/main.5d173030.chunk.js"
   ]
 }
