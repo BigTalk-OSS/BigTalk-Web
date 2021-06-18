@@ -86,7 +86,9 @@ async function loadContract(){
 /**
  * This function loads post data from the contract to the global variables.
  * @async
- * @param {number} limit - The number of posts you want to load. 0 or <0 will fetch all the posts.
+ * @param {number} from - The stating point of loading data
+ * @param {number} limit - Total number of data blocks to load
+ * @param {boolean} ordered - Should the blocks be ordered as 'latest first'
  * @returns {Promise<string>}
  *
  * @example
@@ -101,19 +103,26 @@ async function loadContract(){
  *
  * @see Post
  */
-export async function loadPosts(limit=-1) {
+export async function loadPosts({from = -1, limit=-1, ordered = true} = {from:-1, limit:-1, ordered: true}) {
     window.dispatchEvent(new CustomEvent(UPDATE_STATUS_POST_LOAD_TAG, {detail: "Loading index"}))
     window.postBankIndex = await window.contract.methods.getPostBankIndex().call();
     window.dispatchEvent(new CustomEvent(UPDATE_STATUS_POST_LOAD_TAG, {detail: "Loading posts"}))
     window.postBank = [];
 
-    if(limit<0) limit = window.postBankIndex.length
+    if(ordered){
+        window.postBankIndex = window.postBankIndex.slice().sort().reverse()}
 
-    for(let id of window.postBankIndex.slice(window.postBankIndex.length - limit, window.postBankIndex.length)){
+
+    let start = (from < 0) ? 0 :from
+    let end = (limit < 0) ? window.postBankIndex.length : from + limit
+    console.log(start)
+    console.log(end)
+    for(let id of window.postBankIndex.slice(start, end)){
         window.dispatchEvent(new CustomEvent(UPDATE_POST_ID_FETCH_TAG, {detail: id}))
 
         let rawData = await window.contract.methods.getPost(id).call();
-        let post = new Post({id: id,
+        let post = new Post({
+            id: id,
             title: rawData.heading,
             body: rawData.body,
             location: rawData.location,
@@ -133,7 +142,6 @@ export async function loadPosts(limit=-1) {
 /**
  * This function loads post data from the contract and passes it from the promise
  * @async
- * @param {number} limit - The number of posts you want to load. 0 or <0 will fetch all the posts.
  * @returns {Promise<string>}
  *
  * @example
@@ -152,22 +160,30 @@ export async function loadPosts(limit=-1) {
  * })
  * //returns all the posts
  * @returns {Promise<Post[]>}
- *
+ * @async
  * @see Post
+ * @param {number} from - The stating point of loading data
+ * @param {number} limit - Total number of data blocks to load
+ * @param {boolean} ordered - Should the blocks be ordered as 'latest first'
  */
-export async function getPosts(limit=-1) {
+export async function getPosts({from = -1, limit=-1, ordered = true} = {from:-1, limit:-1, ordered: true}) {
     window.dispatchEvent(new CustomEvent(UPDATE_STATUS_POST_LOAD_TAG, {detail: "Loading index"}))
     let postBankIndex = await window.contract.methods.getPostBankIndex().call();
     window.dispatchEvent(new CustomEvent(UPDATE_STATUS_POST_LOAD_TAG, {detail: "Loading posts"}))
     let postBank = [];
 
-    if(limit<0) limit = postBankIndex.length
+    if(ordered) window.postBankIndex = window.postBankIndex.slice().sort().reverse()
 
-    for(let id of postBankIndex.slice(postBankIndex.length - limit, postBankIndex.length)){
+    let start = (from < 0) ? 0 :from
+    let end = (limit < 0) ? window.postBankIndex.length : from + limit
+    console.log(start)
+    console.log(end)
+    for(let id of postBankIndex.slice(start, end)){
         window.dispatchEvent(new CustomEvent(UPDATE_POST_ID_FETCH_TAG, {detail: id}))
 
         let rawData = await window.contract.methods.getPost(id).call();
-        let post = new Post({id:id,
+        let post = new Post({
+            id:id,
             title: rawData.heading,
             body: rawData.body,
             location: rawData.location,

@@ -9,7 +9,7 @@ import {PostLoadingScreen} from "../screens/PostLoadingScreen";
 /**
  * This function loads all the post data from the contract to the client. Call this function to update all the post data
  * @param {Element} holder - The main holder element
- * @param {JSX.Element} target - The element to render post rendering
+ * @param {JSX.Element} target - The element to render post fetching
  * @param {limit} limit - The number of posts you want to load
  *
  * @example
@@ -22,14 +22,14 @@ import {PostLoadingScreen} from "../screens/PostLoadingScreen";
  * //updates 5 latest posts in the client.
  */
 
-export function updateAllPostsFromBlockChain(holder, target, limit){
+export function updateAllPostsFromBlockChain(holder, target){
     unmountComponentAtNode(holder);
     ReactDOM.render(
         <PostLoadingScreen/>
         ,holder
     );
 
-    loadPosts(limit)
+    loadPosts()
         .then(()=>{Intent(document.getElementById(MAIN_CONTEXT_ID), target)
             .then()});
 
@@ -38,7 +38,7 @@ export function updateAllPostsFromBlockChain(holder, target, limit){
 /**
  * This function fetches data of all the posts in the limit range and passes to the target via intent.
  * @param {Element} holder - The main holder element
- * @param {JSX.Element} target - The element to render post rendering
+ * @param {JSX.Element} target - The element to render post fetching
  * @param {limit} limit - The number of posts you want to load
  *
  *

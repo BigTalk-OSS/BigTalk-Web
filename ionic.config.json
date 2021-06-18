@@ -1,0 +1,7 @@
+{
+  "name": "BigTalk",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

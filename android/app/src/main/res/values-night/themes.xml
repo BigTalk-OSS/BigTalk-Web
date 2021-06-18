@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WebTalk" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">true</item>
+        <item name="android:isLightTheme" tools:targetApi="q">true</item>
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorOnPrimary">#000000</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#000000</item>
+        <item name="colorSecondaryVariant">#000000</item>
+        <item name="colorOnSecondary">#000000</item>
+        <!-- Status bar color. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:navigationBarColor">#00000000</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

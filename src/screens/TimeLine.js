@@ -1,6 +1,7 @@
 import PostCard from "../artifacts/PostCard";
 import './style/TimeLine.css'
 import {sortByNewTimeStampFirst} from "../utils/Helper";
+import React, {useState, useEffect, useCallback} from 'react';
 
 /**
  * This is the timeline component of the web-app. It contains the list of all the post. It's also the home page.
@@ -20,13 +21,29 @@ import {sortByNewTimeStampFirst} from "../utils/Helper";
 export default function TimeLine(){
 
     /**
+     * This variable contains the array of posts currently loaded in the view
+     * @type {Post[]}
+     *
+     * @see PostCard
+     * @see Post
+     */
+    const [currentList, updateCurrentList] = useState(window.postBank)
+
+    /**
      * This variable contains the array of PostCard elements for each post
      * @type {PostCard[]}
      *
      * @see PostCard
      * @see Post
      */
-    let ui = createPostTimeLineInterface(window.postBank);
+    const [ui, updateUI] = useState(createPostTimeLineInterface(currentList));
+
+    const updatePost = () => {
+        console.log(currentList)
+        updateCurrentList(currentList.slice(0,-1))
+        console.log(currentList)
+    }
+
 
     return (
         <div id={"timeline-holder"}>
@@ -34,7 +51,7 @@ export default function TimeLine(){
                 {ui}
             </div>
             <div id={"timeline-filter-options"}>
-                <span id={"recommended-topics-title"}>Recommended Topics</span>
+                <span id={"recommended-topics-title"} onClick={updatePost}>Recommended Topics</span>
             </div>
         </div>
     );
@@ -55,7 +72,7 @@ export function createPostTimeLineInterface(postList){
     let postListView = [];
     postList = sortByNewTimeStampFirst(postList);
     for(let post of postList){
-        postListView.push(<PostCard post={post}/>)
+        postListView.push(<PostCard index = {post.id} post={post}/>)
     }
     return postListView
 }

@@ -1,0 +1,8 @@
+{
+  "appId": "io.bigtalk.android",
+  "appName": "BigTalk",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
